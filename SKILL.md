@@ -1,6 +1,6 @@
 ---
 name: tutor-triage
-description: Helps students work through course questions from their own materials, then prepares a tutor-ready escalation when the answer is uncertain. Use this Skill when a student is stuck on a concept or problem, sends a screenshot or voice note from class, asks whether a question was answered before, wants to prepare a focused question for a tutor, or needs the time, place, agenda, or preparation for an upcoming tutoring session.
+description: Helps students work through course questions from their own materials, then prepares a tutor-ready escalation when the answer is uncertain. Use this Skill when a student is stuck on a concept or problem, sends a screenshot or voice note from class, wants to save questions for a tutor, asks whether a question was answered before, or needs the time, place, agenda, or preparation for an upcoming tutoring session.
 ---
 
 # Tutor Triage
@@ -41,13 +41,35 @@ Draft a message for the student to send. Include only the context the tutor need
 
 Keep the draft short enough to send as a text. Do not send it. If Cubbie has a way to contact the tutor, show the exact message and recipient and wait for the student's clear approval before sending.
 
+## Running question log
+
+Keep unresolved tutor questions in one Google Doc per course so the student arrives at each session with a useful agenda.
+
+1. When the student explicitly asks to track tutor questions, create a Google Doc named `Tutor Questions — <course>` in their connected Google Drive. If the Skill first identifies a question worth saving without an earlier request, offer to create the log and automatically add future unresolved questions; wait for the student's agreement before creating it.
+2. Remember the document link and whether the student enabled automatic logging for that course. Before creating a document later, search Google Drive for that exact title and reuse the existing document. Do not create duplicate logs.
+3. If automatic logging is enabled, add a question when the answer cannot be verified, the student wants to ask the tutor, or the issue depends on a tutor- or instructor-specific convention. Otherwise, show the proposed entry and ask whether to add it.
+4. Avoid duplicate entries. If the same problem and point of confusion are already open, update that entry with new context instead of adding another.
+5. Give each entry:
+   - status: Open;
+   - the local date it was added;
+   - course, topic, and problem or source reference;
+   - what the student tried;
+   - the exact point of confusion;
+   - the short tutor-ready question.
+6. After adding or updating an entry, text one short confirmation and put the Google Doc link on its own line.
+7. After a tutoring session, offer to review the open entries. Mark an entry Resolved only when the student says it was answered. Record the tutor's explanation from the student's account of it; do not invent or silently rewrite the tutor's answer.
+
+If Google is not connected, give the student the formatted entry in the chat and ask them to connect Google before offering to create the running document.
+
 ## Session flow
 
 1. Search the student's Google Calendar and synced email for the tutoring session. Also check relevant Canvas announcements or course pages when appropriate.
 2. Return the next matching session's local date, time, location or meeting link, and any preparation instructions. Include the source link when one was returned.
 3. If several sessions could match, show at most three and ask which one they mean.
 4. If no session is found, say where you checked and ask the student to send the schedule or tutor message. Never guess.
-5. Offer to create one reminder before the session. Suggest a sensible default, but let the student choose the time. Create it only after the student agrees.
+5. If the course's question log has open entries, offer a reminder before the session to review the log and ask the tutor about them. Suggest a sensible default, but let the student choose the time. Create it only after the student agrees.
+6. Word the scheduled reminder so it still makes sense when it runs later: name Tutor Triage, the course, the session, and the question-log document to check. When it runs, list at most the three most urgent open questions and put the document link on its own line.
+7. For a recurring tutoring schedule, offer a recurring pre-session reminder only after the student confirms the schedule and frequency. Otherwise create a one-time reminder for the next verified session.
 
 ## Memory
 
